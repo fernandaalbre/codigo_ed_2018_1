@@ -1,1 +1,55 @@
 
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <list>
+
+using namespace std;
+
+void mostrar(list<int> rodaSangrenta){
+    for(auto elemento : rodaSangrenta)
+        cout << elemento << " ";
+}
+
+int main()
+{
+    int qtd = 0;
+    int espada = 0;
+    list<int> rodaSangrenta;
+
+    cin >> qtd;
+    cin >> espada;
+
+    for (int i = 0; i < qtd; i++) {
+        rodaSangrenta.push_back(i + 1);
+    }
+
+    for (auto num : rodaSangrenta) {
+        cout << num << ", ";
+    }
+
+    while (rodaSangrenta.front() != espada){
+        rodaSangrenta.push_back(rodaSangrenta.front());
+        rodaSangrenta.pop_front();
+    }
+
+    while (rodaSangrenta.size() != 1){
+        //mostrar(rodaSangrenta);
+        int num = rodaSangrenta.front();
+        rodaSangrenta.push_back(rodaSangrenta.front());
+        cout << "\n";
+        rodaSangrenta.pop_front();
+        cout << "\n";
+        rodaSangrenta.pop_front();
+        cout << "\n";
+        while(--num) {
+            rodaSangrenta.push_back(rodaSangrenta.front());
+            rodaSangrenta.pop_front();
+        }
+        mostrar(rodaSangrenta);
+        cout << "\n";
+
+    }
+
+    return 0;
+}
